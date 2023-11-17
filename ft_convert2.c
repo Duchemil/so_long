@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:19:15 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/13 17:49:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:34:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strndup(const char *src, int n)
 	return (dest);
 }
 
-int	ft_gnl_strlen(char *s, int j)
+int	ft_strlen(char *s, int j)
 {
 	int		i;
 	char	c;
@@ -83,7 +83,7 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	int		i;
 
 	i = 0;
-	dest = malloc(sizeof(char) * ((ft_gnl_strlen(s1, 1) + ft_gnl_strlen(s2, 0)) + 1));
+	dest = malloc(sizeof(char) * ((ft_strlen(s1, 1) + ft_strlen(s2, 0)) + 1));
 	if (dest)
 	{
 		while (s1 && s1[i])

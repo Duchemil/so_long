@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/17 18:24:07 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:29:39 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	ft_check_closed(t_data *data)
 			if (((x == 0) || (x == data->info.rows - 1))
 				&& data->info.map[x][y] != '1'
 				&& data->info.map[x][y] != '\n')
-					return (0);
+				return (0);
 			if (data->info.map[x][y] == '\n')
 			{
 				if (data->info.map[x][y - 1] != '1')
@@ -122,12 +122,12 @@ int	ft_check(t_data *data)
 	else if (ft_check_closed(data) == 0)
 	{
 		printf("Error, map isn't closed/surrounded by walls.\n");
-		return(0);
+		return (0);
 	}
 	else if (ft_check_rec(data) == 0)
 	{
 		printf("Error, map isn't rectangular.\n");
-		return(0);
+		return (0);
 	}
 	else if ((data->info.start.x == -1 && data->info.start.y == -1)
 		|| (data->info.exit.x == -1 && data->info.exit.y == -1))

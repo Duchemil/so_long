@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:31:32 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/17 16:19:09 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:31:37 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	buff_erase(char *buff)
 	while (buff[i] != '\n')
 		i++;
 	i++;
-	while (j < ft_gnl_strlen(buff, 0) - i)
+	while (j < ft_strlen(buff, 0) - i)
 	{
 		buff[j] = buff[i + j];
 		j++;

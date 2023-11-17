@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/17 18:00:47 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:37:35 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ typedef struct s_info_map
 
 typedef struct s_data
 {
-	void *mlx_ptr;     // MLX pointer
-	void *win_ptr;     // MLX window pointer
-	void *textures[5]; // MLX image pointers (on the stack)
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*textures[5];
 	t_info	info;
-	// Map pointer (contains map details- preferably kept on the stack)
 }			t_data;
 
 void		get_next_line(int fd, int line, t_info *map);
@@ -56,7 +55,7 @@ int			ft_check_rec(t_data *data);
 int			ft_check(t_data *data);
 int			ft_add_comps(t_data *data, int x, int y, char c);
 int			ft_check_closed(t_data *data);
-int			ft_gnl_strlen(char *s, int j);
+int			ft_strlen(char *s, int j);
 char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);
 int			ft_gnl_strchr(char *s);
