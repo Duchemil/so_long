@@ -7,10 +7,19 @@
 
 int on_destroy(t_data *data)
 {
+	int	x;
+
+	x = 0;
 	mlx_destroy_image(data->mlx_ptr, data->textures[0]);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	while(x < data->info.rows)
+	{
+		free(data->info.map[x]);
+		x++;
+	}
+	free(data->info.map);
 	exit(0);
 	return (0);
 }
@@ -45,6 +54,14 @@ int main(int argc, char **argv)
 	int	i = 0;
 	int	fd = 0;
 
+	if (argc != 2)
+		return (0);
+	data.info.collec_count = 0;
+	data.info.exit.x = -1;
+	data.info.exit.y = -1;
+	data.info.start.x = -1;
+	data.info.start.y = -1;
+	data.info.rows = -1;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
@@ -72,17 +89,16 @@ int main(int argc, char **argv)
 		if (fd == -1)
 			return (0);
 		data.info.rows = ft_count_lines(fd);
-		data.info.map = malloc(sizeof(char *) * data.info.rows + 1);
-		data.info.map[data.info.rows] = '\0';
+		data.info.map = malloc(sizeof(char *) * data.info.rows);
 		close(fd);
 		fd = open(argv[1], O_RDONLY);
 		while(i < data.info.rows)
 		{
 			get_next_line(fd, i, &data.info);
-			printf("String : %s", data.info.map[i]);
 			i++;
 		}
-		printf("-----------------------------------------------\n");
+		if (ft_check(data) == 0)
+			printf("Error\n");
 	}
 	mlx_loop(data.mlx_ptr);
 	return (0);

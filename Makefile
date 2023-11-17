@@ -6,15 +6,15 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2023/11/14 17:14:31 by lduchemi         ###   ########.fr        #
+#    Updated: 2023/11/17 14:57:00 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-OBJS = main.c ft_convert.c ft_convert2.c
+CFLAGS = -Wall -Wextra -Werror -g3
+OBJS = main.c ft_convert.c ft_convert2.c ft_check.c
 INCLUDES = -I/usr/include -Imlx
 MLX_DIR = ./mlx
 MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
