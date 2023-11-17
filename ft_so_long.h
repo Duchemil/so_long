@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/17 14:51:49 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:00:47 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ typedef struct s_data
 
 void		get_next_line(int fd, int line, t_info *map);
 char		*ft_strndup(const char *src, int n);
-int			ft_check_rec(t_data data);
-int			ft_check(t_data data);
-int			ft_add_comps(t_data data, int x, int y, char c);
+int			ft_check_rec(t_data *data);
+int			ft_check(t_data *data);
+int			ft_add_comps(t_data *data, int x, int y, char c);
+int			ft_check_closed(t_data *data);
 int			ft_gnl_strlen(char *s, int j);
 char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);

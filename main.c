@@ -68,21 +68,6 @@ int main(int argc, char **argv)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 1280, 1080, "Jeu banger");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	data.textures[0] = mlx_xpm_file_to_image(data.mlx_ptr, PATH_GROUND, &width, &height);
-	if (!data.textures[0])
-		return (free(data.mlx_ptr), 1);
-	while (x < width)
-	{
-		y = 0;
-		while (y < height)
-		{
-			mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.textures[0], x * 14 + 136, y * 14 + 116);
-			y++;
-		}
-		x++;
-	}
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
@@ -97,9 +82,24 @@ int main(int argc, char **argv)
 			get_next_line(fd, i, &data.info);
 			i++;
 		}
-		if (ft_check(data) == 0)
-			printf("Error\n");
+		ft_check(&data);
 	}
+	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
+	// Affichage textures
+	// data.textures[0] = mlx_xpm_file_to_image(data.mlx_ptr, PATH_GROUND, &width, &height);
+	// if (!data.textures[0])
+	// 	return (free(data.mlx_ptr), 1);
+	// while (x < width)
+	// {
+	// 	y = 0;
+	// 	while (y < height)
+	// 	{
+	// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.textures[0], x * 14 + 136, y * 14 + 116);
+	// 		y++;
+	// 	}
+	// 	x++;
+	// }
