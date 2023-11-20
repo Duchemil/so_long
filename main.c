@@ -52,6 +52,7 @@ int main(int argc, char **argv)
 	t_data data;
 	int	i = 0;
 	int	fd = 0;
+	int	collec;
 
 	if (argc != 2)
 		return (0);
@@ -61,6 +62,7 @@ int main(int argc, char **argv)
 	data.info.start.x = -1;
 	data.info.start.y = -1;
 	data.info.rows = -1;
+	collec = 0;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
@@ -82,7 +84,7 @@ int main(int argc, char **argv)
 		get_next_line(fd, i, &data.info);
 		i++;
 	}
-	ft_check(&data);
+	ft_check(&data, collec);
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }

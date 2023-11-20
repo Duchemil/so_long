@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/17 18:29:39 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:28:40 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	ft_check_rec(t_data *data)
 				last_y = y;
 		}
 		if (y != last_y)
+		{
+			printf("Error, map isn't rectangular.\n");
 			return (0);
+		}
 		x++;
 	}
 	return (1);
@@ -96,10 +99,10 @@ int	ft_check_closed(t_data *data)
 		y = 0;
 		while (data->info.map[x][y])
 		{
-			if (((x == 0) || (x == data->info.rows - 1))
+			if (((x == 0) || (x == data->info.rows))
 				&& data->info.map[x][y] != '1'
 				&& data->info.map[x][y] != '\n')
-				return (0);
+					return (0);
 			if (data->info.map[x][y] == '\n')
 			{
 				if (data->info.map[x][y - 1] != '1')
@@ -112,7 +115,7 @@ int	ft_check_closed(t_data *data)
 	return (1);
 }
 
-int	ft_check(t_data *data)
+int	ft_check(t_data *data, int collec)
 {
 	if (ft_check_comps(data) == 0)
 	{
@@ -125,15 +128,18 @@ int	ft_check(t_data *data)
 		return (0);
 	}
 	else if (ft_check_rec(data) == 0)
-	{
-		printf("Error, map isn't rectangular.\n");
 		return (0);
-	}
 	else if ((data->info.start.x == -1 && data->info.start.y == -1)
 		|| (data->info.exit.x == -1 && data->info.exit.y == -1))
 	{
 		printf("Error, map has no exit or player start.\n");
 		return (0);
 	}
+	else if (ft_winnable(data, data->info.start.x, data->info.start.y, &collec) == 0)
+	{
+		printf("Error, map isn't winnable\n");
+		return (0);
+	}
+	printf("Check finito\n");
 	return (1);
 }
