@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/21 17:01:17 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:20:01 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_check_comps(t_data *data)
 		}
 		x++;
 	}
+	if (data->info.collec_count == 0)
+		return (0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/21 17:09:15 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:39:53 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define FT_SO_LONG_H
 
 # include "libft/libft.h"
+# include "mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # define PATH_GROUND "./textures/ground.xpm"
 # define PATH_WALL "./textures/wall.xpm"
 # define PATH_COIN "./textures/coin.xpm"
@@ -57,6 +57,7 @@ void		get_next_line(int fd, int line, t_info *map);
 char		*ft_strndup(const char *src, int n);
 int			ft_check_rec(t_data *data);
 int			ft_check(t_data *data, int collec);
+int			ft_ber(char *filename);
 int			ft_init_text(t_data *data);
 void		ft_print(t_data *data);
 int			ft_winnable(t_data *data, int x, int y, int *collec);

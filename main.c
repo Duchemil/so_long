@@ -18,6 +18,7 @@ int on_destroy(t_data *data)
 		free(data->info.map[x]);
 		x++;
 	}
+	if (data->info.map)
 	free(data->info.map);
 	exit(0);
 	return (0);
@@ -54,6 +55,7 @@ void	ft_init(t_data *data, int *collec)
 	data->info.start.x = -1;
 	data->info.start.y = -1;
 	data->info.rows = -1;
+	data->info.map = NULL;
 	*collec = 0;
 }
 
@@ -64,7 +66,7 @@ int main(int argc, char **argv)
 	int	fd = 0;
 	int	collec;
 
-	if (argc != 2)
+	if (argc != 2 || ft_ber(argv[1]) != 1)
 		return (0);
 	ft_init(&data, &collec);
 	data.mlx_ptr = mlx_init();
@@ -78,19 +80,27 @@ int main(int argc, char **argv)
 	}
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+	ft_init_text(&data);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
+	{
+		on_destroy(&data);
 		return (0);
+	}
 	data.info.rows = ft_count_lines(fd);
 	data.info.map = malloc(sizeof(char *) * data.info.rows);
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		on_destroy(&data);
+		return (0);
+	}
 	while (i < data.info.rows)
 	{
 		get_next_line(fd, i, &data.info);
 		i++;
 	}
-	ft_init_text(&data);
 	if (ft_check(&data, collec) == 0)
 	{
 		on_destroy(&data);
@@ -100,4 +110,3 @@ int main(int argc, char **argv)
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
-
