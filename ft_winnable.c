@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/20 18:30:03 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:13:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_walkable(t_data *data, int x, int y, int *collec)
 	else
 		return (0);
 }
+
 // printf("Char[%d][%d] : %c, collec : %d\n", x, y, data->info.map[x][y], *collec);
 int	ft_winnable(t_data *data, int x, int y, int *collec)
 {
@@ -34,14 +35,14 @@ int	ft_winnable(t_data *data, int x, int y, int *collec)
 		return (1);
 	if (ft_walkable(data, x, y, collec) == 1)
 	{
-		if (data->info.map[x][y] != 'E')
+		if (data->info.map[x][y] != 'E' && data->info.map[x][y] != 'c')
 			data->info.map[x][y] = 'V';
 		if (ft_winnable(data, x + 1, y, collec) == 1
 			|| ft_winnable(data, x, y + 1, collec) == 1
 			|| ft_winnable(data, x - 1, y, collec) == 1
 			|| ft_winnable(data, x, y - 1, collec) == 1)
 			return (1);
-		if (data->info.map[x][y] == 'c')
+		if (data->info.map[x][y] == 'C')
 			(*collec)--;
 		return (0);
 	}
