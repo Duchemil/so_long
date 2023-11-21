@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 	int	fd = 0;
 	int	collec;
 
-	if (argc != 2 || ft_ber(argv[1]) != 1)
+	if (argc != 2 || ft_ber(argv[1]) == 0)
 		return (0);
 	ft_init(&data, &collec);
 	data.mlx_ptr = mlx_init();
