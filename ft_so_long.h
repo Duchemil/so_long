@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/21 18:39:53 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:34:24 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define PATH_WALL "./textures/wall.xpm"
 # define PATH_COIN "./textures/coin.xpm"
 # define PATH_EXIT "./textures/exit.xpm"
+# define PATH_CHARACTER "./textures/character.xpm"
 # define WIDTH 1280
 # define HEIGHT 720
 
@@ -42,6 +43,10 @@ typedef struct s_info_map
 	int		cols;
 	t_pos	exit;
 	t_pos	start;
+	t_pos	player;
+	t_pos	movement;
+	int		count;
+	int		size;
 	int		collec_count;
 }			t_info;
 
@@ -56,9 +61,15 @@ typedef struct s_data
 void		get_next_line(int fd, int line, t_info *map);
 char		*ft_strndup(const char *src, int n);
 int			ft_check_rec(t_data *data);
+int			ft_change_text(t_data *data);
+int			ft_check_text(t_data *data);
+int			ft_move(int key, t_data *data);
+void		ft_print2(int x, int y, t_data *data);
+int			on_destroy(t_data *data);
+int			ft_possible_move(int key, t_data *data);
 int			ft_check(t_data *data, int collec);
 int			ft_ber(char *filename);
-int			ft_init_text(t_data *data);
+int			ft_init_text(t_data *data, int width, int height);
 void		ft_print(t_data *data);
 int			ft_winnable(t_data *data, int x, int y, int *collec);
 int			ft_add_comps(t_data *data, int x, int y, char c);

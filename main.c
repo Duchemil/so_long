@@ -10,6 +10,7 @@ int on_destroy(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->textures[1]);
 	mlx_destroy_image(data->mlx_ptr, data->textures[2]);
 	mlx_destroy_image(data->mlx_ptr, data->textures[3]);
+	mlx_destroy_image(data->mlx_ptr, data->textures[4]);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
@@ -28,6 +29,8 @@ int on_keypress(int keysym, t_data *data)
 {
 	if (keysym == 53 || keysym == 65307)
 		on_destroy(data);
+	if (keysym == 119 || keysym == 97 || keysym == 115 || keysym == 100)
+		ft_move(keysym, data);
 	return (0);
 }
 
@@ -55,6 +58,10 @@ void	ft_init(t_data *data, int *collec)
 	data->info.start.x = -1;
 	data->info.start.y = -1;
 	data->info.rows = -1;
+	data->info.movement.x = 0;
+	data->info.movement.y = 0;
+	data->info.count = 0;
+	data->info.size = 32;
 	data->info.map = NULL;
 	*collec = 0;
 }
@@ -62,7 +69,7 @@ void	ft_init(t_data *data, int *collec)
 int main(int argc, char **argv)
 {
 	t_data data;
-	int	i = 0;
+	int	i = -1;
 	int	fd = 0;
 	int	collec;
 
@@ -74,38 +81,23 @@ int main(int argc, char **argv)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 720, 480, "Jeu banger");
 	if (!data.win_ptr)
-	{
-		free(data.mlx_ptr);
-		return (1);
-	}
+		return (free(data.mlx_ptr), 1);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-	ft_init_text(&data);
+	ft_init_text(&data, 16, 16);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		on_destroy(&data);
-		return (0);
-	}
+		return (on_destroy(&data));
 	data.info.rows = ft_count_lines(fd);
 	data.info.map = malloc(sizeof(char *) * data.info.rows);
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		on_destroy(&data);
-		return (0);
-	}
-	while (i < data.info.rows)
-	{
+		return (on_destroy(&data));
+	while (++i < data.info.rows)
 		get_next_line(fd, i, &data.info);
-		i++;
-	}
 	if (ft_check(&data, collec) == 0)
-	{
-		on_destroy(&data);
-		return (0);
-	}
+		return (on_destroy(&data));
 	ft_print(&data);
 	mlx_loop(data.mlx_ptr);
 	return (0);

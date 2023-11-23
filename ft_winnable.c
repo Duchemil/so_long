@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/21 18:48:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:39:24 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	ft_winnable(t_data *data, int x, int y, int *collec)
 		return (1);
 	if (ft_walkable(data, x, y, collec) == 1)
 	{
-		if (data->info.map[x][y] != 'E' && data->info.map[x][y] != 'c')
+		if (data->info.map[x][y] != 'E' && data->info.map[x][y] != 'c'
+			&& data->info.map[x][y] != 'P')
 			data->info.map[x][y] = 'V';
 		if (ft_winnable(data, x + 1, y, collec) == 1 || ft_winnable(data, x, y
 				+ 1, collec) == 1 || ft_winnable(data, x - 1, y, collec) == 1
