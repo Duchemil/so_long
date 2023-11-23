@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 16:37:22 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:21:04 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_move(int key, t_data *data)
 		ft_change_text(data);
 		data->info.count++;
 		if (data->info.collec_count == 0
-			&& data->info.map[data->info.player.y ][data->info.player.x] == 'E')
-			{
-				write(1, "C'est gagne !\n", 15);
-				on_destroy(data);
-			}
+			&& data->info.map[data->info.player.y][data->info.player.x] == 'E')
+		{
+			write(1, "C'est gagne !\n", 15);
+			on_destroy(data);
+		}
 		return (0);
 	}
 	return (1);
@@ -43,16 +43,16 @@ int	ft_possible_move(int key, t_data *data)
 		data->info.movement.x = 1;
 	if (data->info.map[data->info.player.y + data->info.movement.y]
 		[data->info.player.x + data->info.movement.x] == '1')
-			return (1);
+		return (1);
 	if (data->info.map[data->info.player.y + data->info.movement.y]
 		[data->info.player.x + data->info.movement.x] == 'C'
 		|| data->info.map[data->info.player.y + data->info.movement.y]
 		[data->info.player.x + data->info.movement.x] == 'c')
-		{
-			data->info.collec_count--;
-			data->info.map[data->info.player.y + data->info.movement.y]
-				[data->info.player.x + data->info.movement.x] = '0';
-		}
+	{
+		data->info.collec_count--;
+		data->info.map[data->info.player.y + data->info.movement.y]
+		[data->info.player.x + data->info.movement.x] = '0';
+	}
 	return (0);
 }
 
@@ -67,7 +67,6 @@ int	ft_change_text(t_data *data)
 	x = data->info.player.x;
 	y = data->info.player.y;
 	text = 0;
-
 	if (data->info.map[y][x] == 'E')
 		text = 2;
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[text],
@@ -77,4 +76,21 @@ int	ft_change_text(t_data *data)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[4],
 		data->info.player.x * size, data->info.player.y * size);
 	return (0);
+}
+
+int	ft_count_lines(int fd)
+{
+	char	c;
+	char	last;
+	int		nb;
+
+	nb = 0;
+	last = '#';
+	while (read(fd, &c, 1) == 1)
+	{
+		if (c == '\n' && last != '\n')
+			nb++;
+		last = c;
+	}
+	return (nb);
 }

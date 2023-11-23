@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/21 18:20:01 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:12:09 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	ft_check_closed(t_data *data)
 	return (1);
 }
 
-int	ft_check(t_data *data, int collec)
+int	ft_check(t_data *data)
 {
 	if (ft_check_comps(data) == 0)
 	{
@@ -137,8 +137,7 @@ int	ft_check(t_data *data, int collec)
 		printf("Error, map has no exit or player start.\n");
 		return (0);
 	}
-	else if (ft_winnable(data, data->info.start.x,
-			data->info.start.y, &collec) == 0)
+	else if (ft_winnable(data, data->info.start.x, data->info.start.y == 0))
 	{
 		printf("Error, map isn't winnable\n");
 		return (0);

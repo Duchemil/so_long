@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 16:34:24 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:21:31 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_info_map
 	int		count;
 	int		size;
 	int		collec_count;
+	int		collec;
 }			t_info;
 
 typedef struct s_data
@@ -62,16 +63,17 @@ void		get_next_line(int fd, int line, t_info *map);
 char		*ft_strndup(const char *src, int n);
 int			ft_check_rec(t_data *data);
 int			ft_change_text(t_data *data);
-int			ft_check_text(t_data *data);
 int			ft_move(int key, t_data *data);
 void		ft_print2(int x, int y, t_data *data);
 int			on_destroy(t_data *data);
 int			ft_possible_move(int key, t_data *data);
-int			ft_check(t_data *data, int collec);
+int			ft_check(t_data *data);
+int			ft_count_lines(int fd);
 int			ft_ber(char *filename);
+int			ft_so_long2(t_data *data, char *argv);
 int			ft_init_text(t_data *data, int width, int height);
 void		ft_print(t_data *data);
-int			ft_winnable(t_data *data, int x, int y, int *collec);
+int			ft_winnable(t_data *data, int x, int y);
 int			ft_add_comps(t_data *data, int x, int y, char c);
 int			ft_check_closed(t_data *data);
 int			ft_strlen(char *s, int j);
