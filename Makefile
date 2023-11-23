@@ -6,37 +6,28 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2023/11/23 14:53:07 by lduchemi         ###   ########.fr        #
+#    Updated: 2023/11/23 17:29:27 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CC = gcc -Wall -Wextra -Werror -g3
 OBJS = main.c ft_convert.c ft_convert2.c ft_check.c ft_winnable.c ft_print.c ft_movement.c
 INCLUDES = -I/usr/include -Imlx
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 
-all: $(MLX_LIB) $(NAME)
+%.o: %.c
+	$(CC) -Imlx -c $< -o $@
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+	$(CC) $(OBJS) mlx/libmlx.a -lXext -lX11 -o $(NAME)
 
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
+all: $(NAME)
 
 clean:
-	$(RM) $(OBJS:.c=.o)
+	rm -f *.o
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re: clean all
-
-.PHONY: bonus all clean fclean re
+re:	fclean all
