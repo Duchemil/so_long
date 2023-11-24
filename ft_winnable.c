@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/24 16:50:40 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:50:56 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,30 @@
 int	ft_ber(char *filename)
 {
 	int		len;
+	int		fd;
+	char	c;
+	int		x;
 
 	len = 0;
+	x = 0;
 	while (filename[len])
 		len++;
 	if (len < 4)
 		return (0);
 	if (filename[len - 4] == '.' && filename[len - 3] == 'b' && filename[len
 			- 2] == 'e' && filename[len - 1] == 'r')
-		return (1);
-	else
-		return (0);
+		{
+			fd = open(filename, O_RDONLY);
+			if (fd == -1)
+				return (0);
+			while (read(fd, &c, 1) > 0)
+			{
+				if (c != '\n')
+					x++;
+			}
+			return (x);
+		}
+	return (0);
 }
 
 int	ft_walkable(t_data *data, int x, int y)
