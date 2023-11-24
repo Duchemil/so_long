@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 17:12:09 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:11:42 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_check_rec(t_data *data)
 		}
 		if (y != last_y)
 		{
-			printf("Error, map isn't rectangular.\n");
+			write(1, "Error, map isn't rectangular.\n", 31);
 			return (0);
 		}
 		x++;
@@ -110,6 +110,8 @@ int	ft_check_closed(t_data *data)
 				if (data->info.map[x][y - 1] != '1')
 					return (0);
 			}
+			if (x == data->info.rows - 1 && data->info.map[x][y] == 'P')
+				return (0);
 			y++;
 		}
 		x++;
@@ -121,12 +123,12 @@ int	ft_check(t_data *data)
 {
 	if (ft_check_comps(data) == 0)
 	{
-		printf("Error, map doesn't have the right components.\n");
+		write(1, "Error, map doesn't have the right components.\n", 47);
 		return (0);
 	}
 	else if (ft_check_closed(data) == 0)
 	{
-		printf("Error, map isn't closed/surrounded by walls.\n");
+		write(1, "Error, map isn't closed/surrounded by walls.\n", 46);
 		return (0);
 	}
 	else if (ft_check_rec(data) == 0)
@@ -134,12 +136,12 @@ int	ft_check(t_data *data)
 	else if ((data->info.start.x == -1 && data->info.start.y == -1)
 		|| (data->info.exit.x == -1 && data->info.exit.y == -1))
 	{
-		printf("Error, map has no exit or player start.\n");
+		write(1, "Error, map has no exit or player start.\n", 41);
 		return (0);
 	}
-	else if (ft_winnable(data, data->info.start.x, data->info.start.y == 0))
+	else if (ft_winnable(data, data->info.start.x, data->info.start.y) != 1)
 	{
-		printf("Error, map isn't winnable\n");
+		write(1, "Error, map isn't winnable\n", 27);
 		return (0);
 	}
 	return (1);

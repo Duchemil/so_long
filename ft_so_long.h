@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 17:21:31 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:18:21 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ typedef struct s_info_map
 	t_pos	player;
 	t_pos	movement;
 	int		count;
+	int		fd;
 	int		size;
+	int		off_x;
+	int		off_y;
 	int		collec_count;
 	int		collec;
 }			t_info;
@@ -65,11 +68,17 @@ int			ft_check_rec(t_data *data);
 int			ft_change_text(t_data *data);
 int			ft_move(int key, t_data *data);
 void		ft_print2(int x, int y, t_data *data);
+int			ft_check_size(t_data *data, char *argv);
 int			on_destroy(t_data *data);
+int			on_destroy3(t_data *data);
+int			on_destroy2(t_data *data, int i);
 int			ft_possible_move(int key, t_data *data);
 int			ft_check(t_data *data);
 int			ft_count_lines(int fd);
+void		ft_init(t_data *data);
 int			ft_ber(char *filename);
+int			ft_fd(t_data *data, int x, int old_y);
+void		ft_put_di(int number);
 int			ft_so_long2(t_data *data, char *argv);
 int			ft_init_text(t_data *data, int width, int height);
 void		ft_print(t_data *data);

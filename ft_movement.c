@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 17:21:04 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:11:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int	ft_move(int key, t_data *data)
 	{
 		ft_change_text(data);
 		data->info.count++;
+		write(1, "Movements : ", 13);
+		ft_put_di(data->info.count);
+		write(1, "\n", 1);
 		if (data->info.collec_count == 0
 			&& data->info.map[data->info.player.y][data->info.player.x] == 'E')
 		{
-			write(1, "C'est gagne !\n", 15);
+			write(1, "You won !\n", 11);
 			on_destroy(data);
 		}
 		return (0);
@@ -93,4 +96,14 @@ int	ft_count_lines(int fd)
 		last = c;
 	}
 	return (nb);
+}
+
+void	ft_put_di(int number)
+{
+	char	*decimal;
+
+	decimal = "0123456789";
+	if (number >= 10)
+		ft_put_di((number / 10));
+	write(1, &decimal[number % 10], 1);
 }

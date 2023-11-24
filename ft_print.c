@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/23 17:20:13 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:44:03 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ int	ft_init_text(t_data *data, int width, int height)
 	data->textures[0] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_GROUND,
 			&width, &height);
 	if (!data->textures[0])
-		return (free(data->mlx_ptr), 1);
+		return (1);
 	data->textures[1] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_WALL, &width,
 			&height);
 	if (!data->textures[1])
-		return (free(data->mlx_ptr), 1);
+		return (2);
 	data->textures[2] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_EXIT, &width,
 			&height);
 	if (!data->textures[2])
-		return (free(data->mlx_ptr), 1);
+		return (3);
 	data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_COIN, &width,
 			&height);
 	if (!data->textures[3])
-		return (free(data->mlx_ptr), 1);
+		return (4);
 	data->textures[4] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_CHARACTER,
 			&width, &height);
 	if (!data->textures[4])
-		return (free(data->mlx_ptr), 1);
+		return (5);
 	return (0);
 }
 
@@ -79,4 +79,22 @@ void	ft_print2(int x, int y, t_data *data)
 	else if (data->info.map[y][x] == 'c' || data->info.map[y][x] == 'C')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[3],
 			x * size, y * size);
+}
+
+int	ft_fd(t_data *data, int x, int old_y)
+{
+	data->info.off_x = old_y;
+	data->info.off_y = x;
+	return (close(data->info.fd), 0);
+}
+
+int	on_destroy3(t_data *data)
+{
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	if (data->info.map)
+		free(data->info.map);
+	write(1, "Error, map is too big to render on the screen\n", 47);
+	exit(0);
+	return (0);
 }
