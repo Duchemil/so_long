@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/24 15:47:22 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:50:40 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_ber(char *filename)
 {
-	int	len;
+	int		len;
 
 	len = 0;
 	while (filename[len])
@@ -106,5 +106,5 @@ int	ft_check_size(t_data *data, char *argv)
 		if (y > 0)
 			old_y = y;
 	}
-	return (ft_fd(data, x, old_y));
+	return (ft_fd(data, x, old_y), x);
 }

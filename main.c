@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/24 15:31:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:53:29 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	if (ft_check_size(&data, argv[1]) != 0)
+	if (ft_check_size(&data, argv[1]) == 0)
 		return (on_destroy3(&data));
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 32 * data.info.off_x,
 			data.info.off_y * 32, "So long");

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/24 15:44:03 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:55:49 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	on_destroy3(t_data *data)
 	free(data->mlx_ptr);
 	if (data->info.map)
 		free(data->info.map);
-	write(1, "Error, map is too big to render on the screen\n", 47);
+	write(1, "Error, map is too big/small to render on the screen\n", 53);
 	exit(0);
 	return (0);
 }
