@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/24 17:43:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:25:59 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,20 @@ void	ft_print(t_data *data)
 		x = 0;
 		while (data->info.map[y][x] != '\n')
 		{
-			ft_print2(x, y, data);
+			ft_print2(y, x, data);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	ft_print2(int x, int y, t_data *data)
+void	ft_print2(int y, int x, t_data *data)
 {
 	int	size;
 
 	size = data->info.size;
+	data->info.map[data->info.start.x][data->info.start.y] = 'P';
+	data->info.map[data->info.exit.x][data->info.exit.y] = 'E';
 	if (data->info.map[y][x] == 'V' || data->info.map[y][x] == '0')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[0],
 			x * size, y * size);
