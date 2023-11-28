@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/27 13:44:50 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:24:24 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_move(int key, t_data *data)
 	{
 		ft_change_text(data);
 		data->info.count++;
-		write(1, "Movements : ", 13);
+		write(1, "Moves : ", 9);
 		ft_put_di(data->info.count);
 		write(1, "\n", 1);
 		if (data->info.collec_count == 0
