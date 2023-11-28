@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/27 16:25:59 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:41:18 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	ft_print(t_data *data)
 		}
 		y++;
 	}
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 10, 10, 0xFFFFFF, "Moves : ");
+	data->info.mov_count = ft_itoa(data->info.count);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF, data->info.mov_count);
+	free(data->info.mov_count);
 }
 
 void	ft_print2(int y, int x, t_data *data)
