@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_movementbonus.c                                 :+:      :+:    :+:   */
+/*   ft_movement.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 15:24:50 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:37:55 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,3 @@ int	ft_count_lines(int fd)
 	return (nb);
 }
 
-void	ft_put_di(int number)
-{
-	char	*decimal;
-
-	decimal = "0123456789";
-	if (number >= 10)
-		ft_put_di((number / 10));
-	write(1, &decimal[number % 10], 1);
-}

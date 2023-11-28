@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 15:25:08 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:37:48 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void		ft_init(t_data *data);
 void		reset_map(t_data *data);
 int			ft_ber(char *filename);
 int			ft_fd(t_data *data, int x, int old_y);
-void		ft_put_di(int number);
 int			ft_so_long2(t_data *data, char *argv);
 int			ft_init_text(t_data *data, int width, int height);
 void		ft_print(t_data *data);
