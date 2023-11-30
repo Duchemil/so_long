@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 13:59:30 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:11:48 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	on_destroy2(t_data *data, int i)
 	int	x;
 	int	j;
 
-	x = 0;
+	x = -1;
 	j = 0;
 	while (j < i - 1)
 	{
@@ -27,11 +27,11 @@ int	on_destroy2(t_data *data, int i)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	while (x < data->info.rows)
-	{
+	while (x++ < data->info.rows - 1)
 		free(data->info.map[x]);
-		x++;
-	}
+	x = -1;
+	while (x++ < 5)
+		free(data->info.coin_path[x]);
 	if (data->info.map)
 		free(data->info.map);
 	exit(0);
@@ -42,7 +42,7 @@ int	on_destroy(t_data *data)
 {
 	int	x;
 
-	x = 0;
+	x = -1;
 	mlx_destroy_image(data->mlx_ptr, data->textures[0]);
 	mlx_destroy_image(data->mlx_ptr, data->textures[1]);
 	mlx_destroy_image(data->mlx_ptr, data->textures[2]);
@@ -51,11 +51,11 @@ int	on_destroy(t_data *data)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	while (x < data->info.rows)
-	{
+	while (x++ < data->info.rows - 1)
 		free(data->info.map[x]);
-		x++;
-	}
+	x = -1;
+	while (x++ < 5)
+		free(data->info.coin_path[x]);
 	if (data->info.map)
 		free(data->info.map);
 	exit(0);
@@ -123,6 +123,7 @@ int	ft_so_long2(t_data *data, char *argv)
 	if (ft_check(data) == 0)
 		return (on_destroy(data));
 	ft_print(data);
+	mlx_loop_hook(data->mlx_ptr, &ft_animation, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);
 }

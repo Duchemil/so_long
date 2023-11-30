@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 14:07:37 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:08:21 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_winnable(t_data *data, int y, int x)
 	return (0);
 }
 
-void	ft_init(t_data *data)
+int	ft_init(t_data *data)
 {
 	data->info.collec_count = 0;
 	data->info.exit.x = -1;
@@ -100,7 +100,11 @@ void	ft_init(t_data *data)
 	data->info.size = 32;
 	data->info.map = NULL;
 	data->info.collec = 0;
+	data->info.frame = 0;
 	data->info.mapReset = 0;
+	if (ft_coin_path(data) == 0)
+		return (0);
+	return (1);
 }
 
 int	ft_check_size(t_data *data, char *argv)

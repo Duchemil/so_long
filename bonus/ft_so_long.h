@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 15:37:48 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:21:24 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@
 # include <unistd.h>
 # define PATH_GROUND "./textures/ground.xpm"
 # define PATH_WALL "./textures/wall.xpm"
-# define PATH_COIN "./textures/coin.xpm"
 # define PATH_EXIT "./textures/exit.xpm"
 # define PATH_CHARACTER "./textures/character.xpm"
-# define WIDTH 1280
-# define HEIGHT 720
+# define PATH_COIN "./textures/coin-1.xpm"
 
 typedef struct s_pos
 {
@@ -47,6 +45,7 @@ typedef struct s_info_map
 	t_pos	movement;
 	char	*mov_count;
 	int		count;
+	int		frame;
 	int		fd;
 	int		size;
 	int		off_x;
@@ -54,13 +53,14 @@ typedef struct s_info_map
 	int		collec_count;
 	int		collec;
 	int		mapReset;
+	char	*coin_path[6];
 }			t_info;
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*textures[5];
+	char	*textures[5];
 	t_info	info;
 }			t_data;
 
@@ -77,7 +77,7 @@ int			on_destroy2(t_data *data, int i);
 int			ft_possible_move(int key, t_data *data);
 int			ft_check(t_data *data);
 int			ft_count_lines(int fd);
-void		ft_init(t_data *data);
+int			ft_init(t_data *data);
 void		reset_map(t_data *data);
 int			ft_ber(char *filename);
 int			ft_fd(t_data *data, int x, int old_y);
@@ -93,5 +93,9 @@ char		*test(char *s1, char *dest);
 char		*ft_gnl_strjoin(char *s1, char *s2);
 int			ft_gnl_strchr(char *s);
 void		buff_erase(char *buff);
+int			ft_animation(t_data *data);
+void		ft_print_anim(t_data *data);
+int			ft_coin_path(t_data *data);
+void		ft_free_coin(t_data *data, int nb);
 
 #endif

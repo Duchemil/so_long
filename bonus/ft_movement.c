@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 15:37:55 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:19:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	ft_change_text(t_data *data)
 	text = 0;
 	if (data->info.map[y][x] == 'E')
 		text = 2;
+	if (data->info.map[y][x] == 'c' || data->info.map[y][x] == 'C')
+		data->info.map[y][x] = '0';
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[text],
 		data->info.player.x * size, data->info.player.y * size);
 	data->info.player.x = data->info.player.x + data->info.movement.x;

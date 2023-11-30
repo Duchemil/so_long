@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 16:41:18 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:55:33 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,14 @@ int	ft_fd(t_data *data, int x, int old_y)
 
 int	on_destroy3(t_data *data)
 {
+	int	x;
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	if (data->info.map)
 		free(data->info.map);
+	x = -1;
+	while (x++ < 5)
+		free(data->info.coin_path[x]);
 	write(1, "Error, map is too big/small to render on the screen\n", 53);
 	exit(0);
 	return (0);
