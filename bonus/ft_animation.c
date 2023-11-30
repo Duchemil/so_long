@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:15:21 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 16:26:49 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:29:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	ft_animation(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->textures[3]);
 	data->textures[3] = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->info.coin_path[data->info.frame], &width, &height);
+	if (!data->textures[3])
+	{
+		write(2, "Error, animations textures have a problem\n", 43);
+		on_destroy(data);
+	}
 	ft_print_anim(data);
 	usleep(50000);
 	return (0);

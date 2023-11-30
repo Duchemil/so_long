@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 15:55:33 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:27:46 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	on_destroy3(t_data *data)
 	x = -1;
 	while (x++ < 5)
 		free(data->info.coin_path[x]);
-	write(1, "Error, map is too big/small to render on the screen\n", 53);
+	write(2, "Error, map is too big/small to render on the screen\n", 53);
 	exit(0);
 	return (0);
 }
