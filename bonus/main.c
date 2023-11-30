@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:29:43 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:40:59 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,15 @@ int	main(int argc, char **argv)
 	i = ft_init_text(&data, 16, 16);
 	if (i != 0)
 		on_destroy2(&data, i);
-	if (!ft_so_long2(&data, argv[1]))
+	if (!ft_so_long2(&data, argv[1], -1))
 		return (0);
 	return (0);
 }
 
-int	ft_so_long2(t_data *data, char *argv)
+int	ft_so_long2(t_data *data, char *argv, int i)
 {
 	int	fd;
-	int	i;
 
-	i = -1;
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		return (on_destroy(data));

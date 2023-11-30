@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:27:46 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:39:11 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ft_print(t_data *data)
 	}
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 10, 10, 0xFFFFFF, "Moves : ");
 	data->info.mov_count = ft_itoa(data->info.count);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF, data->info.mov_count);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF,
+		data->info.mov_count);
 	free(data->info.mov_count);
 }
 
@@ -97,6 +98,7 @@ int	ft_fd(t_data *data, int x, int old_y)
 int	on_destroy3(t_data *data)
 {
 	int	x;
+
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	if (data->info.map)

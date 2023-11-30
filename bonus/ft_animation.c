@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:15:21 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:29:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:41:28 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_animation(t_data *data)
 		on_destroy(data);
 	}
 	ft_print_anim(data);
-	usleep(50000);
+	usleep(80000);
 	return (0);
 }
 
@@ -67,6 +67,7 @@ void	ft_free_coin(t_data *data, int nb)
 		i++;
 	}
 }
+
 void	ft_print_anim(t_data *data)
 {
 	int	x;
@@ -79,14 +80,16 @@ void	ft_print_anim(t_data *data)
 		while (data->info.map[y][x] != '\n')
 		{
 			if (data->info.map[y][x] == 'c' || data->info.map[y][x] == 'C')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[3],
-					x * data->info.size, y * data->info.size);
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->textures[3], x * data->info.size, y
+					* data->info.size);
 			x++;
 		}
 		y++;
 	}
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 10, 10, 0xFFFFFF, "Moves : ");
 	data->info.mov_count = ft_itoa(data->info.count);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF, data->info.mov_count);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF,
+		data->info.mov_count);
 	free(data->info.mov_count);
 }

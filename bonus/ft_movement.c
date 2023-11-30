@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 16:19:10 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:37:58 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int	ft_move(int key, t_data *data)
 			1 * 32, 0 * 32);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[1],
 			2 * 32, 0 * 32);
-		mlx_string_put(data->mlx_ptr, data->win_ptr, 10, 10, 0xFFFFFF, "Moves : ");
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 10, 10, 0xFFFFFF,
+			"Moves : ");
 		data->info.mov_count = ft_itoa(data->info.count);
-		mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF, data->info.mov_count);
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 60, 10, 0xFFFFFF,
+			data->info.mov_count);
 		free(data->info.mov_count);
 		if (data->info.collec_count == 0
 			&& data->info.map[data->info.player.y][data->info.player.x] == 'E')
@@ -106,4 +108,3 @@ int	ft_count_lines(int fd)
 	}
 	return (nb);
 }
-
