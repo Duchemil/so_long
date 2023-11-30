@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 16:34:59 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:07:37 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	ft_check_size(t_data *data, char *argv)
 		}
 		else
 			y++;
-		if (x >= 34 || y >= 67)
+		if (x > 34 || y > 60)
 			return (close(data->info.fd), 1);
 		if (y > 0)
 			old_y = y;
