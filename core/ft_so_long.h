@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/28 15:25:08 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:45:14 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <unistd.h>
 # define PATH_GROUND "./textures/ground.xpm"
 # define PATH_WALL "./textures/wall.xpm"
-# define PATH_COIN "./textures/coin.xpm"
+# define PATH_COIN "./textures/coin-1.xpm"
 # define PATH_EXIT "./textures/exit.xpm"
 # define PATH_CHARACTER "./textures/character.xpm"
 # define WIDTH 1280
@@ -53,7 +53,7 @@ typedef struct s_info_map
 	int		off_y;
 	int		collec_count;
 	int		collec;
-	int		mapReset;
+	int		map_reset;
 }			t_info;
 
 typedef struct s_data

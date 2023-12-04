@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:40:22 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:34:07 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_info_map
 	int		off_y;
 	int		collec_count;
 	int		collec;
-	int		mapReset;
+	int		map_reset;
 	char	*coin_path[6];
 }			t_info;
 

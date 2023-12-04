@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:28:00 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:55:10 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	ft_check_rec(t_data *data)
 	int	last_y;
 
 	x = 0;
+	last_y = -1;
 	while (x < data->info.rows)
 	{
 		y = 0;
@@ -105,7 +106,7 @@ int	ft_check_closed(t_data *data)
 				&& data->info.map[x][y] != '1'
 				&& data->info.map[x][y] != '\n')
 				return (0);
-			if (data->info.map[x][y] == '\n')
+			if (data->info.map[x][y] == '\n' && y != 0)
 			{
 				if (data->info.map[x][y - 1] != '1')
 					return (0);

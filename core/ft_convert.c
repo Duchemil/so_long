@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:31:32 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/27 16:32:06 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:45:40 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	reset_map(t_data *data)
 		j = 0;
 		while (data->info.map[i][j])
 		{
-			printf("%c", data->info.map[i][j]);
 			if (data->info.map[i][j] == 'V')
 				data->info.map[i][j] = '0';
 			else if (data->info.map[i][j] == 'C' || data->info.map[i][j] == 'c')

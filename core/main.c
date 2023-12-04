@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:28:14 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:49:27 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	on_destroy2(t_data *data, int i)
 	}
 	if (data->info.map)
 		free(data->info.map);
+	write(2, "Error, texture files have a problem\n", 37);
 	exit(0);
 	return (0);
 }
@@ -76,13 +77,15 @@ int	main(int argc, char **argv)
 	t_data	data;
 	int		i;
 
-	if (argc != 2 || ft_ber(argv[1]) == 0)
-		return (0);
+	if (argc != 2)
+		return (write(2, "Error, args aren't correct\n", 28), 0);
+	if (ft_ber(argv[1]) == 0)
+		return (write(2, "Error, map's file isn't correct\n", 33), 0);
 	ft_init(&data);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	if (ft_check_size(&data, argv[1]) == 0)
+	if (ft_check_size(&data, argv[1]) == 1)
 		return (on_destroy3(&data));
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 32 * data.info.off_x,
 			data.info.off_y * 32, "So long");
@@ -111,6 +114,7 @@ int	ft_so_long2(t_data *data, char *argv)
 	if (data->info.rows != data->info.off_y)
 	{
 		data->info.rows = 0;
+		printf("APRES\n");
 		return (write(2, "Map has empty lines\n", 21), on_destroy(data));
 	}
 	data->info.map = malloc(sizeof(char *) * data->info.rows);

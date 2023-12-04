@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:25:19 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 16:08:21 by lduchemi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:34:05 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_walkable(t_data *data, int y, int x)
 	if (data->info.map[y][x] == 'C')
 	{
 		data->info.map[y][x] = 'c';
-		if (data->info.mapReset == 0)
+		if (data->info.map_reset == 0)
 			data->info.collec++;
 		return (1);
 	}
@@ -60,10 +60,10 @@ int	ft_walkable(t_data *data, int y, int x)
 int	ft_winnable(t_data *data, int y, int x)
 {
 	if (data->info.collec == data->info.collec_count
-		&& data->info.mapReset == 0)
+		&& data->info.map_reset == 0)
 	{
 		reset_map(data);
-		data->info.mapReset = 1;
+		data->info.map_reset = 1;
 	}
 	if (x == data->info.exit.y && y == data->info.exit.x
 		&& data->info.collec == data->info.collec_count)
@@ -101,7 +101,7 @@ int	ft_init(t_data *data)
 	data->info.map = NULL;
 	data->info.collec = 0;
 	data->info.frame = 0;
-	data->info.mapReset = 0;
+	data->info.map_reset = 0;
 	if (ft_coin_path(data) == 0)
 		return (0);
 	return (1);
