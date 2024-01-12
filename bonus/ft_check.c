@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:47:55 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:55:13 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:42:40 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_comps(t_data *data)
 		{
 			if (data->info.map[x][y] == '0' || data->info.map[x][y] == '1'
 				|| data->info.map[x][y] == 'C' || data->info.map[x][y] == 'E'
-				|| data->info.map[x][y] == 'P')
+				|| data->info.map[x][y] == 'P' || data->info.map[x][y] == 'H')
 			{
 				if (ft_add_comps(data, x, y, data->info.map[x][y]) == 0)
 					return (0);

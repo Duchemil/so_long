@@ -6,14 +6,13 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:34:07 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:15:06 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_H
 # define FT_SO_LONG_H
 
-# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -27,6 +26,7 @@
 # define PATH_EXIT "./textures/exit.xpm"
 # define PATH_CHARACTER "./textures/character.xpm"
 # define PATH_COIN "./textures/coin-1.xpm"
+# define PATH_ENEMY "./textures/enemy.xpm"
 
 typedef struct s_pos
 {
@@ -60,7 +60,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	char	*textures[5];
+	char	*textures[6];
 	t_info	info;
 }			t_data;
 
@@ -97,5 +97,10 @@ int			ft_animation(t_data *data);
 void		ft_print_anim(t_data *data);
 int			ft_coin_path(t_data *data);
 void		ft_free_coin(t_data *data, int nb);
+int			ft_dead(t_data *data);
+char		*ft_strdup(const char *src);
+char		*ft_itoa(int n);
+char		*ft_nb(char *string, int len, int n);
+int			ft_len(int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:33:51 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:37:58 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:00:35 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	ft_possible_move(int key, t_data *data)
 		data->info.map[data->info.player.y + data->info.movement.y]
 		[data->info.player.x + data->info.movement.x] = '0';
 	}
+	if (ft_dead(data) == 1)
+		return (1);
 	return (0);
 }
 
@@ -107,4 +109,17 @@ int	ft_count_lines(int fd)
 		last = c;
 	}
 	return (nb);
+}
+
+int	ft_dead(t_data *data)
+{
+	if (data->info.map[data->info.player.y + data->info.movement.y]
+		[data->info.player.x + data->info.movement.x] == 'H')
+	{
+		write(1, "You lost.\n", 10);
+		on_destroy(data);
+		return (1);
+	}
+	else
+		return (0);
 }

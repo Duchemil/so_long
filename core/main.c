@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:49:27 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:01:02 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int	ft_so_long2(t_data *data, char *argv)
 	if (data->info.rows != data->info.off_y)
 	{
 		data->info.rows = 0;
-		printf("APRES\n");
 		return (write(2, "Map has empty lines\n", 21), on_destroy(data));
 	}
 	data->info.map = malloc(sizeof(char *) * data->info.rows);

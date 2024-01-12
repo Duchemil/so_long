@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:45:38 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/11/30 17:39:11 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:54:33 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	ft_init_text(t_data *data, int width, int height)
 			&width, &height);
 	if (!data->textures[4])
 		return (5);
+	data->textures[5] = mlx_xpm_file_to_image(data->mlx_ptr, PATH_ENEMY,
+			&width, &height);
+	if (!data->textures[5])
+		return (6);
 	return (0);
 }
 
@@ -62,30 +66,30 @@ void	ft_print(t_data *data)
 
 void	ft_print2(int y, int x, t_data *data)
 {
-	int	size;
-
-	size = data->info.size;
 	data->info.map[data->info.start.x][data->info.start.y] = 'P';
 	data->info.map[data->info.exit.x][data->info.exit.y] = 'E';
 	if (data->info.map[y][x] == 'V' || data->info.map[y][x] == '0')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[0],
-			x * size, y * size);
+			x * data->info.size, y * data->info.size);
 	else if (data->info.map[y][x] == '1')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[1],
-			x * size, y * size);
+			x * data->info.size, y * data->info.size);
 	else if (data->info.map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[2],
-			x * size, y * size);
+			x * data->info.size, y * data->info.size);
 	else if (data->info.map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[4],
-			x * size, y * size);
+			x * data->info.size, y * data->info.size);
 		data->info.player.x = x;
 		data->info.player.y = y;
 	}
 	else if (data->info.map[y][x] == 'c' || data->info.map[y][x] == 'C')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[3],
-			x * size, y * size);
+			x * data->info.size, y * data->info.size);
+	else if (data->info.map[y][x] == 'H')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[5],
+			x * data->info.size, y * data->info.size);
 }
 
 int	ft_fd(t_data *data, int x, int old_y)

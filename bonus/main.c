@@ -6,7 +6,7 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:51:35 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:40:57 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:47:06 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	on_destroy(t_data *data)
 	if (data->textures[3])
 		mlx_destroy_image(data->mlx_ptr, data->textures[3]);
 	mlx_destroy_image(data->mlx_ptr, data->textures[4]);
+	mlx_destroy_image(data->mlx_ptr, data->textures[5]);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);

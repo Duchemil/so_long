@@ -6,14 +6,13 @@
 /*   By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:48:08 by lduchemi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:45:14 by lduchemi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:05:44 by lduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_H
 # define FT_SO_LONG_H
 
-# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
