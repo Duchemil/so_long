@@ -6,7 +6,7 @@
 #    By: lduchemi <lduchemi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 13:31:42 by lduchemi          #+#    #+#              #
-#    Updated: 2024/01/12 14:47:12 by lduchemi         ###   ########.fr        #
+#    Updated: 2024/02/16 15:43:18 by lduchemi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,3 +35,4 @@ fclean: clean
 
 re:	fclean all
 
+.PHONY: bonus all clean fclean re
